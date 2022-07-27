@@ -9,7 +9,6 @@ namespace RssFeedNotifierUI
     public partial class RssFeederForm : Form
     {
         private FeedNotificationService service;
-        private JsonFeedPersister persister;
 
         public RssFeederForm()
         {
@@ -17,7 +16,6 @@ namespace RssFeedNotifierUI
             FormBorderStyle = FormBorderStyle.FixedSingle;
 
             service = new FeedNotificationService();
-            persister = new JsonFeedPersister();
         }
 
         private void OnShown(object sender, EventArgs e)
