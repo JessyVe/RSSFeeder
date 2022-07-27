@@ -24,6 +24,6 @@ The context menu implemented provides two options:
 
 
 ## TODOs
-- [ ] Add Checkbox in configuration panel besides "URL to RSS Feed" textfield ("Same as above")
+- [X] Add Checkbox in configuration panel besides "URL to RSS Feed" textfield ("Same as above")
 - [ ] Add configuration possibility for refresh times
 - [ ] Add UI for deleting/managing configured sources (working tabs?)

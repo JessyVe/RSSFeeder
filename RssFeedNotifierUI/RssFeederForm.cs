@@ -1,7 +1,6 @@
 ﻿using RssFeedNotifier;
 using RssFeedNotifier.models;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -32,7 +31,7 @@ namespace RssFeedNotifierUI
             {
                 service.GetFeedNotifications(true);
             }
-            else if (e.ClickedItem == shutdownItem)
+            else if (e.ClickedItem == quitItem)
             {
                 Application.Exit();
             }
@@ -54,7 +53,7 @@ namespace RssFeedNotifierUI
             string mainUrl = tbMainUrl.Text;
             string rssUrl = tbRssUrl.Text;
 
-            if (mainUrl == null ||mainUrl.Equals(string.Empty) 
+            if (mainUrl == null || mainUrl.Equals(string.Empty)
                 || rssUrl == null || rssUrl.Equals(string.Empty))
             {
                 lbUiNotification.Text = "Both URLs must be provided!";
@@ -81,6 +80,26 @@ namespace RssFeedNotifierUI
         private void OnTypingStarted(object sender, KeyEventArgs e)
         {
             lbUiNotification.Text = string.Empty;
+        }
+
+        private void OnCheckedChanged(object sender, EventArgs e)
+        {
+            if(tbMainUrl.Text.Equals(string.Empty))
+            {
+                lbUiNotification.Text = "Provide main url first.";
+                return; 
+            }
+
+            tbRssUrl.Enabled = !cbSameAsAbove.Checked;
+            tbRssUrl.Text = tbMainUrl.Text; 
+        }
+
+        private void OnTypingEnded(object sender, KeyEventArgs e)
+        {
+            if(cbSameAsAbove.Checked)
+            {
+                tbRssUrl.Text = tbMainUrl.Text;
+            }
         }
     }
 }
